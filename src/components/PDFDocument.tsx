@@ -164,6 +164,7 @@ const PDFDocument: React.FC<PropData> = ({ apiData }) => {
               paddingVertical: 16,
               flexDirection: "row",
               justifyContent: "space-between",
+              borderTopColor: "#005DFF",
             }}
           >
             <Text

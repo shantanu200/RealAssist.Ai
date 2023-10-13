@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { AiFillPrinter } from "react-icons/ai";
 import { useState } from "react";
+import { yearData } from "../data/data";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
@@ -20,99 +21,124 @@ const Home: React.FC = () => {
     >
       <div
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 32,
-          width: "80%",
+          width: "50%",
+          border: "1px solid black",
+          padding: "2rem",
+          background: "#000",
+          borderRadius: "1rem",
         }}
       >
         <div
           style={{
-            width: "20%",
+            borderBottom: "1px solid #fff",
+            padding: "2rem",
           }}
         >
-          <p>Start Year</p>
-          <select
+          <h1
             style={{
-              padding: "1rem",
-              fontSize: "1.5rem",
-              width: "100%",
-              background: "#fff",
-              borderRadius: ".5rem",
-              border: "1px solid #000",
+              color: "#fff",
             }}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setStart(Number(e.target.value))
-            }
           >
-            <option value={2015}>2015</option>
-            <option value={2016}>2016</option>
-            <option value={2017}>2017</option>
-            <option value={2018}>2018</option>
-            <option value={2019}>2019</option>
-            <option value={2020}>2020</option>
-            <option value={2021}>2021</option>
-            <option value={2022}>2022</option>
-            <option value={2023}>2023</option>
-          </select>
+            Generate RealAssist.AI PDF
+          </h1>
         </div>
         <div
           style={{
-            width: "20%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "1rem",
+            padding: "2rem 0",
           }}
         >
-          <p>End Year</p>
-          <select
+          <div
             style={{
-              padding: "1rem",
-              fontSize: "1.5rem",
-              background: "#fff",
-              width: "100%",
-              borderRadius: ".5rem",
-              border: "1px solid #000",
-            }}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setEnd(Number(e.target.value))
-            }
-          >
-            <option value={2015}>2015</option>
-            <option value={2016}>2016</option>
-            <option value={2017}>2017</option>
-            <option value={2018}>2018</option>
-            <option value={2019}>2019</option>
-            <option value={2020}>2020</option>
-            <option value={2021}>2021</option>
-            <option value={2022}>2022</option>
-            <option value={2023}>2023</option>
-          </select>
-        </div>
-        <div>
-          <button
-            style={{
-              padding: "1rem 2rem",
-              background: "#000",
+              width: "20%",
               color: "#fff",
-              outline: "none",
-              fontSize: "1.5rem",
-              borderRadius: "1rem",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "1rem",
-            }}
-            onClick={() => {
-              if (start >= end) {
-                alert("Please select Start year smaller than End year");
-                return;
-              } else {
-                navigate(`/pdf/${start}/${end}`);
-              }
             }}
           >
-            <AiFillPrinter />
-            Print
-          </button>
+            <p>Start Year</p>
+            <select
+              style={{
+                padding: "1rem",
+                fontSize: "1.5rem",
+                width: "100%",
+                background: "#fff",
+                borderRadius: ".5rem",
+                border: "1px solid #000",
+              }}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setStart(Number(e.target.value))
+              }
+            >
+              {yearData?.map((year, idx) => (
+                <option key={idx} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div
+            style={{
+              width: "20%",
+              color: "#fff",
+            }}
+          >
+            <p>End Year</p>
+            <select
+              style={{
+                padding: "1rem",
+                fontSize: "1.5rem",
+                background: "#fff",
+
+                width: "100%",
+                borderRadius: ".5rem",
+                border: "1px solid #000",
+              }}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+                setEnd(Number(e.target.value))
+              }
+            >
+              {yearData?.map((year, idx) => (
+                <option key={idx} value={year}>
+                  {year}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div
+            style={{
+              color: "#fff",
+            }}
+          >
+            <p>Action</p>
+            <button
+              style={{
+                padding: "1rem 2rem",
+                color: "#000",
+                background: "#fff",
+                outline: "none",
+                fontSize: "1.5rem",
+                borderRadius: "1rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "1rem",
+              }}
+              onClick={() => {
+                if (start >= end) {
+                  alert("Please select Start year smaller than End year");
+                  return;
+                } else {
+                  navigate(`/pdf/${start}/${end}`);
+                }
+              }}
+            >
+              <AiFillPrinter />
+              Print
+            </button>
+          </div>
         </div>
       </div>
     </main>
