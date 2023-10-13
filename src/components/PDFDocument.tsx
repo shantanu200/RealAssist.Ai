@@ -5,11 +5,10 @@ import {
   Text,
   StyleSheet,
   Image,
-  Font,
 } from "@react-pdf/renderer";
 import logo from "../assets/logo.jpg";
 import ReactPDFChart from "react-pdf-charts";
-import { CartesianGrid, Label, Line, LineChart, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import location from "../assets/location.jpg";
 
 const styles = StyleSheet.create({

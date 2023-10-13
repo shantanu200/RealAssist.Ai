@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { AiFillPrinter } from "react-icons/ai";
 import { useState } from "react";
-import { retinaScale } from "chart.js/helpers";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
