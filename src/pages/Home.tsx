@@ -5,8 +5,8 @@ import { yearData } from "../data/data";
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const [start, setStart] = useState<number>(2015);
-  const [end, setEnd] = useState<number>(2015);
+  const [start, setStart] = useState<number>(Number(yearData[0]));
+  const [end, setEnd] = useState<number>(Number(yearData[yearData.length - 1]));
   return (
     <main
       style={{
@@ -71,6 +71,7 @@ const Home: React.FC = () => {
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setStart(Number(e.target.value))
               }
+              value={start}
             >
               {yearData?.map((year, idx) => (
                 <option key={idx} value={year}>
@@ -99,6 +100,7 @@ const Home: React.FC = () => {
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                 setEnd(Number(e.target.value))
               }
+              value={end}
             >
               {yearData?.map((year, idx) => (
                 <option key={idx} value={year}>
